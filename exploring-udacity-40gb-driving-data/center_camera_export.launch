@@ -1,0 +1,8 @@
+<launch>
+  <node pkg="rosbag" type="play" name="rosbag" args="-d 2 ~/Downloads/dataset.bag"/>
+  <node name="extract" pkg="image_view" type="extract_images" respawn="false" output="screen" cwd="ROS_HOME">
+  <param name="sec_per_frame" value="0.02"/>
+  <param name="filename_format" value="frame%05.jpg"/>
+    <remap from="image" to="/center_camera/image_color"/>
+  </node>
+</launch>
